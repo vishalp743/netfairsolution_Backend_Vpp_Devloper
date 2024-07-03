@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,25 +17,25 @@ export default function SignIn() {
     console.log(payload);
 
     try {
-      const response = await fetch('https://netfairsolution-backend-vpp-devloper.onrender.com/login', {
-        method: 'POST',
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
-
+      console.log(response);
       const data = await response.json();
 
       if (response.ok) {
         // If login is successful, redirect to the home page
-        navigate('/admin');
+        navigate("/admin");
       } else {
         // Handle errors (e.g., display a message to the user)
-        console.error('Login failed:', data.message);
+        console.error("Login failed:", data.message);
       }
     } catch (error) {
-      console.error('Error during login:', error);
+      console.error("Error during login:", error);
     }
   };
 
@@ -75,8 +75,6 @@ export default function SignIn() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-
-
 
           <button
             type="submit"

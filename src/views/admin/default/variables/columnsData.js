@@ -19,39 +19,39 @@ export const columnsDataDevelopment = [
 
 export const columnsDataCheck = [
   {
-    Header: "NAME",
-    accessor: "name",
+    Header: "TITLE",
+    accessor: "title",
   },
   {
-    Header: "PROGRESS",
-    accessor: "progress",
+    Header: "MESSAGE",
+    accessor: "message",
   },
   {
-    Header: "QUANTITY",
-    accessor: "quantity",
+    Header: "AMOUNT",
+    accessor: "amount",
   },
   {
-    Header: "DATE",
-    accessor: "date",
+    Header: "USER",
+    accessor: "userId",
   },
 ];
 
 export const columnsDataColumns = [
   {
-    Header: "NAME",
-    accessor: "name",
+    Header: "TITLE",
+    accessor: "title",
   },
   {
-    Header: "PROGRESS",
-    accessor: "progress",
+    Header: "MESSAGE",
+    accessor: "message",
   },
   {
-    Header: "QUANTITY",
-    accessor: "quantity",
+    Header: "AMOUNT",
+    accessor: "amount",
   },
   {
-    Header: "DATE",
-    accessor: "date",
+    Header: "USER",
+    accessor: "user",
   },
 ];
 

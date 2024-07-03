@@ -22,12 +22,12 @@ const UserSchema = new mongoose.Schema({
     default: false,
   },
   kycverification: {
-    type: String,
-    default: "false",
+    type: Boolean,
+    default: false,
   },
   kycsubmission: {
-    type: String,
-    default: "false",
+    type: Boolean,
+    default: false,
   },
   createdAt: {
     type: Date,
@@ -35,7 +35,7 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-// Specify the collection name 'kkk'
-const User1 = mongoose.model('UserCred', UserSchema);
+// Specify the collection name 'Users'
+const User1 = mongoose.model('Users', UserSchema);
 
 module.exports = User1;
