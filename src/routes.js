@@ -6,7 +6,9 @@ import NFTMarketplace from "views/admin/marketplace";
 import Profile from "views/admin/profile";
 import DataTables from "views/admin/tables";
 import RTLDefault from "views/rtl/default";
-import UserDetails from "views/admin/kycVerification"
+import UserDetails from "views/admin/kycVerification";
+import TransactionTracker from "views/admin/trans_history";
+import FeedbackForm from "views/admin/Grivience";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
@@ -34,6 +36,20 @@ const routes = [
     path: "kycVerification",
     icon: <MdHome className="h-6 w-6" />,
     component: <UserDetails />,
+  },
+  {
+    name: "Transaction History",
+    layout: "/admin",
+    path: "transactionhistroy",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <TransactionTracker />,
+  },
+  {
+    name: "Grivience",
+    layout: "/admin",
+    path: "Grivience",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <FeedbackForm />,
   },
   // {
   //   name: "NFT Marketplace",

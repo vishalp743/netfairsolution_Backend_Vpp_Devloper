@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 5000;
 const User = require('./models/User');
 const User1 = require('./models/User1');
 const KYC = require('./models/Verification');
+const Grievance = require('./models/Feedback'); 
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
@@ -55,7 +56,6 @@ console.log(email);
         res.status(500).json({ message: 'Server error' });
     }
 });
-
 app.get('/getUserEmails', async (req, res) => {
     try {
       console.log("isnide");
@@ -68,8 +68,6 @@ app.get('/getUserEmails', async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
 });
-
-// Route to fetch KYC details by email
 app.get('/getKYCDetailsByEmail', async (req, res) => {
     const { email } = req.query;
     console.log(email);
@@ -84,9 +82,7 @@ app.get('/getKYCDetailsByEmail', async (req, res) => {
       console.error('Error fetching KYC details:', error);
       res.status(500).json({ message: 'Server error' });
     }
-  });
-
-// Route to verify KYC
+});
 app.post('/verifyKYC', async (req, res) => {
     const { email } = req.body;
     try {
@@ -97,8 +93,31 @@ app.post('/verifyKYC', async (req, res) => {
       console.error('Error verifying KYC:', error);
       res.status(500).json({ message: 'Server error' });
     }
-  });
+});
 
+app.get('/grievances', async (req, res) => {
+  try {
+    const grievances = await Grievance.find();
+    console.log(grievances);
+    res.json(grievances);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+// Resolve a grievance
+app.put('/grievances/:id/resolve', async (req, res) => {
+  try {
+    const grievance = await Grievance.findById(req.params.id);
+    if (!grievance) {
+      return res.status(404).json({ message: 'Grievance not found' });
+    }
+    grievance.isRead = true;
+    await grievance.save();
+    res.json(grievance);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
