@@ -25,12 +25,15 @@ const Dashboard = () => {
 
   const FetchData = async () => {
     try {
-      const response = await fetch("http://localhost:5000/transactions", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://netfairsolution-backend-vpp-devloper.vercel.app/transactions",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await response.json();
 
       console.log(data?.transactionsData);
